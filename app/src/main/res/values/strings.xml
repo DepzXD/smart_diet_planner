@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">bento</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="meal_image">Meal Image</string>
+    <string name="card_text">Card Text</string>
+    <string-array name="mealsCategorys">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Snacks</item>
+        <item>Dinner</item>
+    </string-array>
 </resources>
