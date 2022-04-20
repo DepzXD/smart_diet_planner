@@ -1,25 +1,23 @@
 package com.example.bento;
 
-public class MealModel {
-  String cardTitle;
-  String cardImageUrl;
+public class MealModel extends MealCategoryModel {
+  int position;
   int carbs;
   int calories;
   int fat;
   int protein;
 
-  public MealModel(String cardTitle, String cardImageUrl, int carbs, int calories, int fat, int protein) {
-    this.cardTitle = cardTitle;
-    this.cardImageUrl = cardImageUrl;
+  public MealModel(int position, String cardTitle, String cardImageUrl, int carbs, int calories, int fat, int protein) {
+    super(cardTitle, cardImageUrl);
     this.carbs = carbs;
     this.calories = calories;
     this.fat = fat;
     this.protein = protein;
+    this.position = position;
   }
 
-  public MealModel(String cardTitle, String cardImageUrl) {
-    this.cardTitle = cardTitle;
-    this.cardImageUrl = cardImageUrl;
+  public int getPosition() {
+    return position;
   }
 
   public String getCardTitle() {

@@ -1,5 +1,6 @@
 package com.example.bento;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements UpdateRecView {
   private RecyclerView mealsCategoryRecView;
-  private ArrayList<MealModel> mealCategoryModels = new ArrayList<>();
+  public RecyclerView mealsRecView;
+  private ArrayList<MealCategoryModel> mealCategoryModels = new ArrayList<>();
+  private boolean toggleMeals = false;
+  private MealsCategoryRecycleViewAdapter mealsCategoryRecycleViewAdapter;
+
   public HomeFragment() {
     // Required empty public constructor
   }
@@ -23,26 +29,49 @@ public class HomeFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
+    mealsRecView = root.findViewById(R.id.mealsRecView);
     mealsCategoryRecView = root.findViewById(R.id.mealsCategoryRecView);
     setMealCategoryModels();
-    MealsRecycleViewAdapter adapter = new MealsRecycleViewAdapter(root.getContext(), mealCategoryModels);
-    mealsCategoryRecView.setAdapter(adapter);
-    LinearLayoutManager horizontalView = new LinearLayoutManager(root.getContext());
-    horizontalView.setOrientation(LinearLayoutManager.HORIZONTAL);
-    mealsCategoryRecView.setLayoutManager(horizontalView);
+    mealsCategoryRecycleViewAdapter = new MealsCategoryRecycleViewAdapter(root.getContext(), mealCategoryModels, this);
+    mealsCategoryRecView.setAdapter(mealsCategoryRecycleViewAdapter);
+    mealsCategoryRecView.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+
+    MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), new ArrayList<>(), this);
+    mealsRecView.setAdapter(mealsRecycleViewAdapter);
+    mealsRecView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     return root;
   }
 
   private void setMealCategoryModels() {
-    String [] cardTitles = getResources().getStringArray(R.array.mealsCategorys);
-    String [] cardImgs = {"https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",
-        "//images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",
-        "https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",
-        "https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",
-        "https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" };
-
-    for(int i=0; i<cardTitles.length;i++){
-      mealCategoryModels.add(new MealModel(cardTitles[i], cardImgs[i]));
+    String[] cardTitles = getResources().getStringArray(R.array.mealsCategorys);
+    for (String cardTitle : cardTitles) {
+      mealCategoryModels.add(new MealCategoryModel(cardTitle, ""));
     }
+  }
+
+  @SuppressLint("NotifyDataSetChanged")
+  @Override
+  public void callback(int position, ArrayList<MealModel> item) {
+    if (!toggleMeals) {
+      mealsRecView.setVisibility(View.GONE);
+      toggleMeals = !toggleMeals;
+      return;
+    } else {
+      mealsRecView.setVisibility(View.VISIBLE);
+      toggleMeals = !toggleMeals;
+    }
+    MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), item, this);
+    mealsRecycleViewAdapter.notifyDataSetChanged();
+    mealsRecView.setAdapter(mealsRecycleViewAdapter);
+  }
+
+  @Override
+  public void updateList(int position, MealModel meal) {
+    mealCategoryModels.get(position).cardImageUrl = meal.cardImageUrl;
+
+    mealsCategoryRecycleViewAdapter.notifyItemChanged(position);
+    mealsRecView.setVisibility(View.GONE);
+    toggleMeals = !toggleMeals;
   }
 }
