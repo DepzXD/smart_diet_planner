@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +19,10 @@ public class HomeFragment extends Fragment implements UpdateRecView {
   private RecyclerView mealsCategoryRecView;
   public RecyclerView mealsRecView;
   private ArrayList<MealCategoryModel> mealCategoryModels = new ArrayList<>();
-  private boolean toggleMeals = false;
   private MealsCategoryRecycleViewAdapter mealsCategoryRecycleViewAdapter;
+  private RecyclerView progressCardRecView;
+  private ArrayList<ProgressModel> progressModels;
+  private boolean toggleMeals = false;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -40,6 +43,17 @@ public class HomeFragment extends Fragment implements UpdateRecView {
     MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), new ArrayList<>(), this);
     mealsRecView.setAdapter(mealsRecycleViewAdapter);
     mealsRecView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+    progressModels = new ArrayList<>();
+    progressModels.add(new ProgressModel("Calories","Kcal", R.color.green, 20));
+    progressModels.add(new ProgressModel("Carbs","Kcal", R.color.blue, 40));
+    progressModels.add(new ProgressModel("Protean","Kcal", R.color.pink, 10));
+    progressModels.add(new ProgressModel("Fat","Kcal", R.color.yellow, 90));
+    progressCardRecView = root.findViewById(R.id.progressCardRecView);
+    ProgressRecycleViewAdapter progressRecycleViewAdapter = new ProgressRecycleViewAdapter(getContext(), progressModels);
+    progressCardRecView.setAdapter(progressRecycleViewAdapter);
+    progressCardRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
     return root;
   }
 
