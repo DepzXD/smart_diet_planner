@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -35,8 +36,8 @@ public class ProgressRecycleViewAdapter extends RecyclerView.Adapter<ProgressRec
     holder.cardTitle.setText(progressModels.get(position).getTitle());
     holder.cardPercentage.setText(progressModels.get(position).getProgress() + "%");
     holder.cardShort.setText(progressModels.get(position).getShortName());
-    holder.cardShort.setTextColor(progressModels.get(position).getColor());
-    holder.circularProgressIndicator.setTrackColor(progressModels.get(position).getColor());
+    holder.cardShort.setTextColor(ContextCompat.getColor(context, progressModels.get(position).getColor()));
+    holder.circularProgressIndicator.setIndicatorColor(ContextCompat.getColor(context, progressModels.get(position).getColor()));
     holder.circularProgressIndicator.setProgress(progressModels.get(position).getProgress());
   }
 
@@ -56,6 +57,8 @@ public class ProgressRecycleViewAdapter extends RecyclerView.Adapter<ProgressRec
       cardShort = itemView.findViewById(R.id.progress_card_name);
       cardPercentage = itemView.findViewById(R.id.progress_card_percentage);
       circularProgressIndicator = itemView.findViewById(R.id.circular_progressbar_indicator);
+//      circularProgressIndicator.setIndicatorColor(itemView.getResources().getColor(R.color.pink));
+
     }
   }
 }
