@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment implements UpdateRecView {
   private RecyclerView progressCardRecView;
   private ArrayList<ProgressModel> progressModels;
   private boolean toggleMeals = false;
+  private int toggleCategoryPosition = -1;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -75,27 +76,29 @@ public class HomeFragment extends Fragment implements UpdateRecView {
   @SuppressLint("NotifyDataSetChanged")
   @Override
   public void callback(int position, ArrayList<MealModel> item, MaterialCardView cardView) {
-    if (!toggleMeals) {
+    if (toggleCategoryPosition == -1 && !toggleMeals) {
+      mealsRecView.setVisibility(View.VISIBLE);
+      toggleMeals = true;
+      cardView.setStrokeWidth(20);
+      toggleCategoryPosition = position;
+      MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), item, this);
+      mealsRecycleViewAdapter.notifyDataSetChanged();
+      mealsRecView.setAdapter(mealsRecycleViewAdapter);
+    } else if (toggleCategoryPosition == position && toggleMeals) {
       mealsRecView.setVisibility(View.GONE);
       toggleMeals = !toggleMeals;
       cardView.setStrokeWidth(0);
-      return;
-    } else {
-      mealsRecView.setVisibility(View.VISIBLE);
-      toggleMeals = !toggleMeals;
-      cardView.setStrokeWidth(20);
+      toggleCategoryPosition = -1;
     }
-    MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), item, this);
-    mealsRecycleViewAdapter.notifyDataSetChanged();
-    mealsRecView.setAdapter(mealsRecycleViewAdapter);
   }
 
   @Override
   public void updateList(int position, MealModel meal) {
     mealCategoryModels.get(position).cardImageUrl = meal.cardImageUrl;
 
-    mealsCategoryRecycleViewAdapter.notifyDataSetChanged();
+    mealsCategoryRecycleViewAdapter.notifyItemChanged(position);
     mealsRecView.setVisibility(View.GONE);
-    toggleMeals = !toggleMeals;
+    toggleMeals = false;
+    toggleCategoryPosition = -1;
   }
 }

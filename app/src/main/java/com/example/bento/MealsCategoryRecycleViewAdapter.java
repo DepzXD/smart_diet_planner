@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -51,7 +52,7 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
       item.add(new MealModel(0,"Meal 11","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
       item.add(new MealModel(0,"Meal 12","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
       item.add(new MealModel(0,"Meal 13","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-      updateRecView.callback(position, item,holder.parent);
+//      updateRecView.callback(position, item,holder.parent);
       check = false;
     }
 
@@ -61,8 +62,6 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
         item.add(new MealModel(0,"Meal 11","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
         item.add(new MealModel(0,"Meal 12","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
         item.add(new MealModel(0,"Meal 13","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-        holder.parent.setStrokeWidth(20);
-//        holder.parent.setStrokeColor("#C4C4C4");
         updateRecView.callback(0, item, holder.parent);
       } else if (position == 1) {
         ArrayList<MealModel> item = new ArrayList<>();
@@ -75,13 +74,13 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
         item.add(new MealModel(2,"Meal 31","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
         item.add(new MealModel(2,"Meal 32","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
         item.add(new MealModel(2,"Meal 33","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-        updateRecView.callback(3, item,holder.parent);
+        updateRecView.callback(2, item,holder.parent);
       } else if (position == 3) {
         ArrayList<MealModel> item = new ArrayList<>();
-        item.add(new MealModel(position,"Meal 41","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
-        item.add(new MealModel(position,"Meal 42","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-        item.add(new MealModel(position,"Meal 43","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-        updateRecView.callback(position, item,holder.parent);
+        item.add(new MealModel(3,"Meal 41","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
+        item.add(new MealModel(3,"Meal 42","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
+        item.add(new MealModel(3,"Meal 43","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
+        updateRecView.callback(3, item, holder.parent);
       }
     });
   }
@@ -99,7 +98,8 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
     public MyViewHolder(@NonNull View itemView) {
       super(itemView);
       parent = itemView.findViewById(R.id.meals_card_view);
-      parent.setStrokeColor(itemView.getResources().getColor(R.color.green));
+
+      parent.setStrokeColor(ContextCompat.getColor(itemView.getContext(),R.color.green));
       cardImg = itemView.findViewById(R.id.meals_card_img);
       cardTitle = itemView.findViewById(R.id.meals_card_txt);
     }
