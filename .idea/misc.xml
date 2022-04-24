@@ -3,22 +3,31 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/asus/AndroidStudioProjects/smart_diet_planner/app/src/main/res/layout/fragment_profile.xml" value="0.152" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/btnstyle.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/dialog_button_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dialog_button_padding.xml" value="0.156" />
+        <entry key="app/src/main/res/drawable/dialog_button_positive.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dialog_corner_round.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dialog_input_round_corner.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dialogbgcolor.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_book.xml" value="0.349" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.349" />
         <entry key="app/src/main/res/drawable/ic_ico_progress.xml" value="0.349" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.349" />
-        <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.3175" />
+        <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.349" />
+        <entry key="app/src/main/res/drawable/roundimageview.xml" value="0.2275" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/circular_progressbar_card.xml" value="0.264945652173913" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_interview.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.334375" />
         <entry key="app/src/main/res/layout/fragment_progres.xml" value="0.35052083333333334" />
-        <entry key="app/src/main/res/layout/fragment_progress.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_progress.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/meals_card_view.xml" value="0.32518115942028986" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3149171270718232" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1855" />
       </map>
     </option>
   </component>
