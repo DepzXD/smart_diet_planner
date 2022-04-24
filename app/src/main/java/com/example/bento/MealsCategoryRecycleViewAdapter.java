@@ -20,7 +20,6 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
   Context context;
   ArrayList<MealCategoryModel> mealModels;
   UpdateRecView updateRecView;
-  boolean check = true;
 
   public MealsCategoryRecycleViewAdapter(Context context, ArrayList<MealCategoryModel> mealModels, UpdateRecView updateRecView) {
     this.context = context;
@@ -45,15 +44,6 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
       holder.cardImg.setVisibility(View.GONE);
     } else {
       holder.cardImg.setVisibility(View.VISIBLE);
-    }
-
-    if (check) {
-      ArrayList<MealModel> item = new ArrayList<>();
-      item.add(new MealModel(0,"Meal 11","https://images.pexels.com/photos/1893573/pexels-photo-1893573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",4,5,6,7));
-      item.add(new MealModel(0,"Meal 12","https://images.pexels.com/photos/4518703/pexels-photo-4518703.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-      item.add(new MealModel(0,"Meal 13","https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600",4,5,6,7));
-//      updateRecView.callback(position, item,holder.parent);
-      check = false;
     }
 
     holder.parent.setOnClickListener(view -> {
