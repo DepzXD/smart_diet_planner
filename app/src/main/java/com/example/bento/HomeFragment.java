@@ -3,6 +3,7 @@ package com.example.bento;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,16 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements UpdateRecView {
   private RecyclerView mealsCategoryRecView;
   public RecyclerView mealsRecView;
-  private ArrayList<MealCategoryModel> mealCategoryModels = new ArrayList<>();
+  private ArrayList<MealCategoryModel> mealCategoryModels;
   private MealsCategoryRecycleViewAdapter mealsCategoryRecycleViewAdapter;
   private RecyclerView progressCardRecView;
   private ArrayList<ProgressModel> progressModels;
   private boolean toggleMeals = false;
+  private int toggleCategoryPosition = -1;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -53,12 +57,17 @@ public class HomeFragment extends Fragment implements UpdateRecView {
     ProgressRecycleViewAdapter progressRecycleViewAdapter = new ProgressRecycleViewAdapter(getContext(), progressModels);
     progressCardRecView.setAdapter(progressRecycleViewAdapter);
     progressCardRecView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+    toggleMeals = false;
 
     return root;
   }
 
   private void setMealCategoryModels() {
+    if (null != mealCategoryModels){
+      return;
+    }
     String[] cardTitles = getResources().getStringArray(R.array.mealsCategorys);
+    mealCategoryModels = new ArrayList<>();
     for (String cardTitle : cardTitles) {
       mealCategoryModels.add(new MealCategoryModel(cardTitle, ""));
     }
@@ -66,18 +75,21 @@ public class HomeFragment extends Fragment implements UpdateRecView {
 
   @SuppressLint("NotifyDataSetChanged")
   @Override
-  public void callback(int position, ArrayList<MealModel> item) {
-    if (!toggleMeals) {
+  public void callback(int position, ArrayList<MealModel> item, MaterialCardView cardView) {
+    if (toggleCategoryPosition == -1 && !toggleMeals) {
+      mealsRecView.setVisibility(View.VISIBLE);
+      toggleMeals = true;
+      cardView.setStrokeWidth(20);
+      toggleCategoryPosition = position;
+      MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), item, this);
+      mealsRecycleViewAdapter.notifyDataSetChanged();
+      mealsRecView.setAdapter(mealsRecycleViewAdapter);
+    } else if (toggleCategoryPosition == position && toggleMeals) {
       mealsRecView.setVisibility(View.GONE);
       toggleMeals = !toggleMeals;
-      return;
-    } else {
-      mealsRecView.setVisibility(View.VISIBLE);
-      toggleMeals = !toggleMeals;
+      cardView.setStrokeWidth(0);
+      toggleCategoryPosition = -1;
     }
-    MealsRecycleViewAdapter mealsRecycleViewAdapter = new MealsRecycleViewAdapter(getContext(), item, this);
-    mealsRecycleViewAdapter.notifyDataSetChanged();
-    mealsRecView.setAdapter(mealsRecycleViewAdapter);
   }
 
   @Override
@@ -86,6 +98,7 @@ public class HomeFragment extends Fragment implements UpdateRecView {
 
     mealsCategoryRecycleViewAdapter.notifyItemChanged(position);
     mealsRecView.setVisibility(View.GONE);
-    toggleMeals = !toggleMeals;
+    toggleMeals = false;
+    toggleCategoryPosition = -1;
   }
 }
