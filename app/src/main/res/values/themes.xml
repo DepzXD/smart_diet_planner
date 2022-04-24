@@ -14,5 +14,16 @@
 
         <item name="android:statusBarColor" tools:targetApi="l">@color/dark_gray</item>
         <!-- Customize your theme here. -->
+        <item name="buttonStyle">@style/btnstyle</item>
+    </style>
+    <style name="btnstyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btnstyle</item>
+        <item name="backgroundTint">@color/gray</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="borderRound">10dp</item>
+    </style>
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>
