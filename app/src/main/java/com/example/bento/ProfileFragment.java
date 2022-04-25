@@ -2,6 +2,7 @@ package com.example.bento;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.InputType;
+import android.util.Log;
 import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
@@ -28,7 +32,7 @@ public class ProfileFragment extends Fragment {
     // Required empty public constructor
   }
   private TextView txtProfile;
-  private TextView txtAccount;
+  private TextView txtAccount , usrName, usrEmail;
 
   private Button EditNamebtn;
   private Button EditAgebtn;
@@ -37,7 +41,10 @@ public class ProfileFragment extends Fragment {
   private Button Emailbtn;
   private Button Passwordbtn;
   private Button Deletebtn;
+  private Button LogoutBtn;
   private String m_Text = "";
+
+  private FirebaseAuth mAuth;
 
   private ImageView userpic;
 
@@ -52,15 +59,22 @@ public class ProfileFragment extends Fragment {
     EditWeightbtn = root.findViewById(R.id.EditWeightbtn);
     Emailbtn = root.findViewById(R.id.Emailbtn);
     Passwordbtn = root.findViewById(R.id.Passwordbtn);
+    LogoutBtn = root.findViewById(R.id.logoutBtn);
     Deletebtn = root.findViewById(R.id.Deletebtn);
     userpic = root.findViewById(R.id.userpic);
     txtProfile = root.findViewById(R.id.textProfile);
     txtAccount = root.findViewById(R.id.textProfile);
+    usrName = root.findViewById(R.id.userNameTxt);
+    usrEmail = root.findViewById(R.id.userEmailTxt);
 
+    mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
+    usrName.setText(user.getDisplayName());
+    usrEmail.setText(user.getEmail());
 
 //    ImageView Code
 
-    Glide.with(getContext()).asBitmap().load("https://thumbs.gfycat.com/TepidAstonishingBernesemountaindog-mobile.jpg").into(userpic);
+    Glide.with(getContext()).asBitmap().load(user.getPhotoUrl()).into(userpic);
 
 //    EditNameButton Code
     EditNamebtn.setOnClickListener(new View.OnClickListener() {
@@ -384,16 +398,19 @@ public class ProfileFragment extends Fragment {
             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setAllCaps(false);
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).getResources().getDrawable(R.drawable.dialog_button_padding);
 
-
-
-
-
           }
         });
 
         dialog.show();
-
       }
+    });
+
+//    LOGOUT BUTTON CODE
+    LogoutBtn.setOnClickListener(view -> {
+      mAuth.signOut();
+      Intent intent = new Intent(getContext(), SignIn.class);
+      startActivity(intent);
+      getActivity().finish();
     });
     return root;
   }

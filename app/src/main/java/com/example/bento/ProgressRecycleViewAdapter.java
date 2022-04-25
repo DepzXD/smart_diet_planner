@@ -57,8 +57,6 @@ public class ProgressRecycleViewAdapter extends RecyclerView.Adapter<ProgressRec
       cardShort = itemView.findViewById(R.id.progress_card_name);
       cardPercentage = itemView.findViewById(R.id.progress_card_percentage);
       circularProgressIndicator = itemView.findViewById(R.id.circular_progressbar_indicator);
-//      circularProgressIndicator.setIndicatorColor(itemView.getResources().getColor(R.color.pink));
-
     }
   }
 }

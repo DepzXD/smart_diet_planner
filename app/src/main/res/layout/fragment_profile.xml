@@ -39,19 +39,20 @@
                 app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/userNameTxt"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Username"
                 android:textSize="24sp"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/userpic" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/userEmailTxt"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="10dp"
@@ -60,7 +61,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/userNameTxt" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,6 +157,21 @@
             app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Passwordbtn" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            style="@style/btnstyle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="Log out"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.28"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Deletebtn" />
 
         <Button
             android:id="@+id/Emailbtn"
