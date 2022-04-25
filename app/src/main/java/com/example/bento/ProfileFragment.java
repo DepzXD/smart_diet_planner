@@ -115,7 +115,6 @@ public class ProfileFragment extends Fragment {
                     }
                   }
                 });
-            startActivity(new Intent(getContext(), MainActivity.class));
           }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
