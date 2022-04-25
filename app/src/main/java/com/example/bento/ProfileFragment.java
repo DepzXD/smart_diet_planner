@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.InputType;
@@ -23,8 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileFragment extends Fragment {
 
@@ -74,7 +79,7 @@ public class ProfileFragment extends Fragment {
 
 //    ImageView Code
 
-    Glide.with(getContext()).asBitmap().load(user.getPhotoUrl()).into(userpic);
+    Glide.with(getContext()).asBitmap().load(user.getPhotoUrl()).centerCrop().into(userpic);
 
 //    EditNameButton Code
     EditNamebtn.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +100,22 @@ public class ProfileFragment extends Fragment {
           @Override
           public void onClick(DialogInterface dialogInterface, int which) {
             m_Text = input.getText().toString();
-            Toast.makeText(getContext(), "Button Worked & entered name is: " + m_Text, Toast.LENGTH_SHORT).show();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(m_Text)
+                .build();
+
+            user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                  @Override
+                  public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                      Log.d("Profile", "User profile updated.");
+                    }
+                  }
+                });
+            startActivity(new Intent(getContext(), MainActivity.class));
           }
         });
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -408,7 +428,7 @@ public class ProfileFragment extends Fragment {
 //    LOGOUT BUTTON CODE
     LogoutBtn.setOnClickListener(view -> {
       mAuth.signOut();
-      Intent intent = new Intent(getContext(), SignIn.class);
+      Intent intent = new Intent(getContext(), Signin.class);
       startActivity(intent);
       getActivity().finish();
     });
