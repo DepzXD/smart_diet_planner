@@ -12,9 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bento">
         <activity
-            android:name=".MainActivity"
+            android:name=".Personalinfo"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".Signin"
             android:exported="true">
 
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
         </activity>
     </application>
 
