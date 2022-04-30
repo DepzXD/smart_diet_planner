@@ -4,6 +4,10 @@ public class MealCategoryModel {
   String cardTitle;
   String cardImageUrl;
 
+  public MealCategoryModel() {
+
+  }
+
   public MealCategoryModel(String cardTitle, String cardImageUrl) {
     this.cardTitle = cardTitle;
     this.cardImageUrl = cardImageUrl;

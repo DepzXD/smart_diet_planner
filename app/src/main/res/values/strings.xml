@@ -3,10 +3,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="meal_image">Meal Image</string>
     <string name="card_text">Card Text</string>
+    <!-- o_o -->
+    <string name="api_key">e381c9e0f6b74b3fb2df5542f9cbcd37</string>
+    <string name="api_key2">ff22b9c7a29d40f7864d6baa1837f6aa</string>
     <string-array name="mealsCategorys">
         <item>Breakfast</item>
         <item>Lunch</item>
-        <item>Snacks</item>
         <item>Dinner</item>
     </string-array>
 </resources>

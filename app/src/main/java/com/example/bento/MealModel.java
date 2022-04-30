@@ -7,6 +7,10 @@ public class MealModel extends MealCategoryModel {
   int fat;
   int protein;
 
+  public MealModel() {
+    super();
+  }
+
   public MealModel(int position, String cardTitle, String cardImageUrl, int carbs, int calories, int fat, int protein) {
     super(cardTitle, cardImageUrl);
     this.carbs = carbs;
