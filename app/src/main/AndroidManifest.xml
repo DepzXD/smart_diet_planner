@@ -12,17 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bento">
         <activity
+            android:name=".MealInfo"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".Signin"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity android:name=".ActivityPersonalInfo"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityPersonalInfo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
