@@ -64,7 +64,6 @@ public class SignUp extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(SignUp.this, "Successfully Sign Up", Toast.LENGTH_SHORT).show();
                                         showMain();
                                     }
                                 }
@@ -78,7 +77,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     void showMain(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ActivityPersonalInfo.class);
         startActivity(intent);
         finish();
     }

@@ -1,6 +1,7 @@
 package com.example.bento;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,6 +47,18 @@ public class MealDetailRecViewAdaptor extends RecyclerView.Adapter<MealDetailRec
     holder.mealCal.setText(mealModels.get(position).getCalories() + "");
     holder.mealName.setText(mealModels.get(position).getCardTitle());
     Glide.with(context).asBitmap().load(mealModels.get(position).getCardImageUrl()).into(holder.mealImg);
+    holder.parent.setOnClickListener(view -> {
+      Intent intent = new Intent(context, MealInfo.class);
+      intent.putExtra("name", mealModels.get(position).cardTitle);
+      intent.putExtra("fat", String.valueOf(mealModels.get(position).fat));
+      intent.putExtra("carbs", String.valueOf(mealModels.get(position).carbs));
+      intent.putExtra("res", "comming soon");
+      intent.putExtra("protein", String.valueOf(mealModels.get(position).protein));
+      intent.putExtra("cal", String.valueOf(mealModels.get(position).calories));
+      intent.putExtra("img", mealModels.get(position).cardImageUrl);
+      context.startActivity(intent);
+    });
+
   }
 
   @Override
@@ -61,7 +75,7 @@ public class MealDetailRecViewAdaptor extends RecyclerView.Adapter<MealDetailRec
       mealCal = itemView.findViewById(R.id.meal_detail_calories);
       mealName = itemView.findViewById(R.id.meal_detail_name);
       mealImg = itemView.findViewById(R.id.meal_detail_img);
-      parent = itemView.findViewById(R.id.meal_detail_recview);
+      parent = itemView.findViewById(R.id.meal_detail_lyBtn);
     }
   }
 }

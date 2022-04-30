@@ -1,6 +1,7 @@
 package com.example.bento;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,18 @@ public class MealsCategoryRecycleViewAdapter extends RecyclerView.Adapter<MealsC
   public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
     holder.cardTitle.setText(mealModels.get(position).cardTitle);
     Glide.with(context).asBitmap().load(mealModels.get(position).cardImageUrl).centerCrop().into(holder.cardImg);
+
+    holder.parent.setOnClickListener(view -> {
+      Intent intent = new Intent(context, MealInfo.class);
+      intent.putExtra("name", mealModels.get(position).cardTitle);
+      intent.putExtra("fat", String.valueOf(104));
+      intent.putExtra("carbs", String.valueOf(232));
+      intent.putExtra("res", "comming soon");
+      intent.putExtra("protein", String.valueOf(234));
+      intent.putExtra("cal", String.valueOf(200));
+      intent.putExtra("img", mealModels.get(position).cardImageUrl);
+      context.startActivity(intent);
+    });
   }
 
 

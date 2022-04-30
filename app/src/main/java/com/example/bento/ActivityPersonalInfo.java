@@ -1,5 +1,6 @@
 package com.example.bento;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityPersonalInfo extends AppCompatActivity {
     private TextView PersTxt, GenderTxt;
@@ -82,45 +88,30 @@ public class ActivityPersonalInfo extends AppCompatActivity {
                     return;
                 }
 
-
-
-
-
-
-
-
                 int age = Integer.parseInt(editTextAge.getText().toString());
                 int height = Integer.parseInt(editTextHeight.getText().toString());
                 int weight = Integer.parseInt(editTextWeight.getText().toString());
-
-
-
-                double BMR = 0;
+                double brm = 0;
                 if (radioMale.isChecked()){
-//                    BMR = 10W + 6.25H - 5A + 5
-//                    For women:
-//                    BMR = 10W + 6.25H - 5A - 161
-                    BMR = (10 * weight) + (6.25*height)-(5*age) + 5;
+                    brm = (10 * weight) + (6.25*height)-(5*age) + 5;
                 }
                 else{
-                    BMR = (10*weight)+(6.25*height)-(5*age) -161;
+                    brm = (10*weight)+(6.25*height)-(5*age) -161;
                 }
-                Toast.makeText(ActivityPersonalInfo.this, "Your BMR is: " + BMR + " AND DIET IS:  " + spinnerDiet.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-
+                assert user != null;
+                mDatabase.child("users").child(user.getUid()).child("age").setValue(age);
+                mDatabase.child("users").child(user.getUid()).child("height").setValue(height);
+                mDatabase.child("users").child(user.getUid()).child("weight").setValue(weight);
+                mDatabase.child("users").child(user.getUid()).child("brm").setValue(brm);
+                mDatabase.child("users").child(user.getUid()).child("diet").setValue(spinnerDiet.getSelectedItem().toString());
+                startActivity(new Intent(ActivityPersonalInfo.this, MainActivity.class));
+                finish();
             }
         });
-
-
-
-//    Weight Code
-
-//        Age Code
-
-//        BMR CALCULATOR CODE
-
 
     }
 

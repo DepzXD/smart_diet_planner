@@ -8,7 +8,7 @@
     tools:context=".MealInfo">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/meal_info__name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mix Bowl"
@@ -17,11 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg"
         app:layout_constraintVertical_bias="0.057" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/meaInfolImg"
         android:layout_width="409dp"
         android:layout_height="276dp"
         android:layout_marginEnd="2dp"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg" />
 
 
     <View
@@ -54,7 +54,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:background="#bff7c0"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintBottom_toTopOf="@+id/carbsTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:text="Protien"
         android:textColor="@color/underline"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg" />
 
     <TextView
         android:id="@+id/textView6"
@@ -81,7 +81,7 @@
         android:textColor="@color/underline"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -129,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg" />
 
     <TextView
         android:id="@+id/textView5"
@@ -142,7 +142,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/meal_info__name"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -156,10 +156,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/meaInfolImg" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/calTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -172,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/carbsTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -200,10 +200,11 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/resTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:inputType="textMultiLine"
         android:text="1. dvnlsdnvsdkjvladjvlandck jand kjladbn liadjnj liadjkn "
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -211,71 +212,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="2. djghcvkvadbscjkasbdcjkbadjklca"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="3. bdckljbhasdkjlchbajklsdbcnakjlsdc"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4. khdwbckjabsdckjbasdkcbadksj"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.159"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.067" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
-        android:text="5. klsjdnckjnsdkcjljmansdklcas"
-        android:textColor="#FBF9F9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6. djkbckjadhsbckjhbasndklca"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19"
-        app:layout_constraintVertical_bias="0.191" />
-
-    <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/fatTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -289,7 +226,7 @@
         app:layout_constraintVertical_bias="0.166" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/protienTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"

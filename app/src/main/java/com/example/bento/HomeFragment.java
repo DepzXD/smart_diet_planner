@@ -52,6 +52,13 @@ public class HomeFragment extends Fragment implements UpdateRecView {
   private int pos;
   private FirebaseUser user;
   private RequestManager manager;
+  ArrayList<MealModel> mon;
+  ArrayList<MealModel> tue;
+  ArrayList<MealModel> wed;
+  ArrayList<MealModel> thu;
+  ArrayList<MealModel> fri;
+  ArrayList<MealModel> sat;
+  ArrayList<MealModel> sun;
   public HomeFragment() {
     // Required empty public constructor
   }
@@ -63,7 +70,9 @@ public class HomeFragment extends Fragment implements UpdateRecView {
     mAuth = FirebaseAuth.getInstance();
     mDatabase = FirebaseDatabase.getInstance().getReference();
     manager = new RequestManager(getContext());
-    manager.getMealPlan(listener);
+    if (null == mealModels) {
+      manager.getMealPlan(listener);
+    }
     user = mAuth.getCurrentUser();
     if (user == null) {
       getActivity().finish();
@@ -130,12 +139,12 @@ public class HomeFragment extends Fragment implements UpdateRecView {
   public final MealPlanListener listener = new MealPlanListener(){
     @Override
     public void didFetch(MealPlanRes res, String msg) {
-      ArrayList<MealModel> mon = new ArrayList<>();
-      ArrayList<MealModel> tue = new ArrayList<>();
-      ArrayList<MealModel> wed = new ArrayList<>();
-      ArrayList<MealModel> thu = new ArrayList<>();
-      ArrayList<MealModel> fri = new ArrayList<>();
-      ArrayList<MealModel> sat = new ArrayList<>();
+      mon = new ArrayList<>();
+      tue = new ArrayList<>();
+      wed = new ArrayList<>();
+      thu = new ArrayList<>();
+      fri = new ArrayList<>();
+      sat = new ArrayList<>();
       ArrayList<MealModel> sun = new ArrayList<>();
       for (int i=0; i<res.week.monday.meals.size(); i++){
         mon.add(new MealModel(
