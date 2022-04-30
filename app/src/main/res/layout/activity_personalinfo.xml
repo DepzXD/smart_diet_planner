@@ -4,88 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Personalinfo"
-    android:background="#2e353c">
+    android:background="@color/dark_gray">
+
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btnstyle"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PersTxt" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:text="Aditional Information"
-        android:textColor="#FFFFFF"
-        android:textSize="30dp"
+        android:id="@+id/PersTxt"
+        android:layout_width="257dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:text="Personal Information"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/text6"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="24dp"
-        android:background="#495056"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Age"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.055" />
-
-    <EditText
-
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="96dp"
-        android:background="#495056"
-        android:ems="10"
-        android:gravity="center"
-        android:hint=" Height"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <EditText
-
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="168dp"
-        android:background="#495056"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Select Diet"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.144" />
-
-    <Button
-        android:id="@+id/button303"
+        android:id="@+id/editTextHeight"
         android:layout_width="370dp"
         android:layout_height="50dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="256dp"
-        android:layout_marginEnd="20dp"
-        android:text="Submit"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btnstyle"
+        android:ems="10"
+        android:hint="Height in cm"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btnstyle"
+        android:ems="10"
+        android:hint="Weight in kg"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:textColorHint="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight" />
+
+    <Spinner
+        android:id="@+id/spinnerDiet"
+        android:layout_width="370dp"
+
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:popupBackground="@color/gray"
+        android:background="@drawable/btnstyle"
+        android:contentDescription="blah"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GenderTxt" />
+
+    <Button
+        android:id="@+id/Submitbtn"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="SUBMIT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDiet"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <TextView
+        android:id="@+id/GenderTxt"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingTop="5dp"
+        android:text="Gender"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeight" />
+
+    <RadioGroup
+        android:id="@+id/GenderGroup"
+        android:layout_width="283dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/GenderTxt"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWeight">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="103dp"
+            android:buttonTint="@color/green"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:buttonTint="@color/green"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
